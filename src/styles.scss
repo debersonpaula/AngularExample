@@ -1,0 +1,11 @@
+%ColorFont{
+    color: #fff;
+}
+
+html{
+    background: #000;
+    @extend %ColorFont;
+}
+a{
+    @extend %ColorFont;
+}

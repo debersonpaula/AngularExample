@@ -1,0 +1,13 @@
+<div class="header">
+  <h3>{{title}}</h3>
+</div>
+
+<nav>
+  <ul>
+    <li *ngFor="let route of routelist">
+      <a routerLink="/{{route.href}}">{{route.caption}}</a>
+    </li>
+  </ul>
+</nav>
+
+<router-outlet></router-outlet>
