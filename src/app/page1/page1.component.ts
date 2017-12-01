@@ -9,7 +9,9 @@ import { UserData } from '../struct/user';
   styleUrls: ['./page1.component.scss']
 })
 export class Page1Component implements OnInit {
-  user: TUserData;
+  user: TUserData = {
+    name: ''
+  };
 
   constructor(private service: AppDataService) {
   }
@@ -19,7 +21,10 @@ export class Page1Component implements OnInit {
   }
 
   getData(): void {
-    this.service.getData().subscribe( user => this.user = UserData );
+    this.service.getData().subscribe( function(data){
+      console.log(data);
+      this.user = data;
+    });
   }
 
 }

@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { Page1Component } from './page1/page1.component';
@@ -18,7 +19,8 @@ import { AppDataService } from './app-data.service';
   imports: [
     BrowserModule,
     FormsModule,
-    AppRouterModule
+    AppRouterModule,
+    HttpClientModule,
   ],
   providers: [AppDataService],
   bootstrap: [AppComponent]
