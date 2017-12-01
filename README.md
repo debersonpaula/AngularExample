@@ -28,9 +28,13 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 
 ## Development Log
-npm install -g @angluar/cli
-ng new app1 --style=scss
-ng generate component page1
-ng generate component page2
-ng generate module app-router --flat --module=app
-ng generate service app-data
+- npm install -g @angluar/cli
+- ng new app1 --style=scss
+- ng generate component page1
+- ng generate component page2
+- ng generate module app-router --flat --module=app
+- ng generate service app-data --module=app
+
+## Development Log (backend)
+- npm install express --save
+- npm install body-parser --save

@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { Page1Component } from './page1/page1.component';
 import { Page2Component } from './page2/page2.component';
 import { AppRouterModule } from './/app-router.module';
+import { AppDataService } from './app-data.service';
 
 
 @NgModule({
@@ -19,7 +20,7 @@ import { AppRouterModule } from './/app-router.module';
     FormsModule,
     AppRouterModule
   ],
-  providers: [],
+  providers: [AppDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
