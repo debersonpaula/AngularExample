@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 
 import { TUserData } from './struct/types';
-import { UserData } from './struct/user';
+// import { UserData } from './struct/user';
 
 
 const httpOptions = {

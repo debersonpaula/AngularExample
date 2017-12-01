@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TUserData } from '../struct/types';
 import { AppDataService } from '../app-data.service';
-import { UserData } from '../struct/user';
 
 @Component({
   selector: 'app-page1',
@@ -9,9 +8,7 @@ import { UserData } from '../struct/user';
   styleUrls: ['./page1.component.scss']
 })
 export class Page1Component implements OnInit {
-  user: TUserData = {
-    name: ''
-  };
+  user: TUserData;
 
   constructor(private service: AppDataService) {
   }
