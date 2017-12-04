@@ -38,3 +38,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## Development Log (backend)
 - npm install express --save
 - npm install body-parser --save
+- npm install mongoose --save
+- npm install @types/express --save-dev
+- npm install @types/mongoose --save-dev
+- npm install @types/body-parser --save-dev

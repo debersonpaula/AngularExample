@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "outDir": "../../bin/",
+    "strict": true
+  },
+  "include":["../server/**/*.ts"],
+  "exclude":["node_modules"]
+}

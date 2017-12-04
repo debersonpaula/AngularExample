@@ -103,7 +103,7 @@ var AppRouterModule = (function () {
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"header\">\n  <h3>{{title}}</h3>\n</div>\n\n<nav>\n  <ul>\n    <li *ngFor=\"let route of routelist\">\n      <a routerLink=\"/{{route.href}}\">{{route.caption}}</a>\n    </li>\n  </ul>\n</nav>\n\n<router-outlet></router-outlet>\n"
+module.exports = "<div class=\"header\">\r\n  <h3>{{title}}</h3>\r\n</div>\r\n\r\n<nav>\r\n  <ul>\r\n    <li *ngFor=\"let route of routelist\">\r\n      <a routerLink=\"/{{route.href}}\">{{route.caption}}</a>\r\n    </li>\r\n  </ul>\r\n</nav>\r\n\r\n<router-outlet></router-outlet>\r\n"
 
 /***/ }),
 
@@ -222,7 +222,7 @@ var AppModule = (function () {
 /***/ "../../../../../src/app/page1/page1.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>Welcome {{user.name}} to My Site, please register your information below:</p>\n\n<form>\n  <label>Your Name:\n      <input [(ngModel)]=\"user.name\" name=\"username\">\n  </label>\n</form>"
+module.exports = "<p>Welcome {{user.name}} to My Site, please register your information below:</p>\r\n\r\n<form>\r\n  <label>Your Name:\r\n      <input [(ngModel)]=\"user.name\" name=\"username\">\r\n  </label>\r\n</form>"
 
 /***/ }),
 
@@ -293,7 +293,7 @@ var Page1Component = (function () {
 /***/ "../../../../../src/app/page2/page2.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  page2 works!\n</p>\n"
+module.exports = "<p>\r\n  page2 works!\r\n</p>\r\n"
 
 /***/ }),
 
