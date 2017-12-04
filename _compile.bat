@@ -1,1 +1,0 @@
-ng build -op dist -w
