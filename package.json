@@ -9,7 +9,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "dev": "concurrently \"ng build --watch\"  \"node _build.server.js\" "
+    "dev": "concurrently \"ng build --watch\"  \"node _build.dev.js\" "
   },
   "private": true,
   "dependencies": {

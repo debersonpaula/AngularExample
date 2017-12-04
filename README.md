@@ -14,9 +14,12 @@ Install dependencies
 
 ## Run the application in Development mode
 
+This command will run in development mode and will watch for any changes in src folder, both for frontend (Angular) and for backend (/src/server):
+
 `npm run dev`
 
 
+# Only for information
 
 ## Development Log (frontend)
 - npm install -g @angluar/cli
