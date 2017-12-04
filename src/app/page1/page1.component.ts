@@ -11,17 +11,22 @@ export class Page1Component implements OnInit {
   user: TUserData;
 
   constructor(private service: AppDataService) {
+    // initializes user data
+    this.user = {name: ''};
   }
 
   ngOnInit() {
+    // get data from service
     this.getData();
   }
 
   getData(): void {
-    this.service.getData().subscribe( function(data){
-      console.log(data);
-      this.user = data;
-    });
+    this.service.getData().subscribe(data => this.user = data);
+  }
+
+  save(): void {
+    const result = this.service.addData(this.user)
+      .subscribe();
   }
 
 }

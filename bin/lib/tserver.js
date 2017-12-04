@@ -1,7 +1,7 @@
 "use strict";
 /*
 * TServer unit
-* descr: creates basic server with Node + Express + Mongoose + BodyParser
+* descr: creates basic server with Node + Express + BodyParser
 * scope: only server
 * author: dpaula
 * https://github.com/debersonpaula
@@ -9,6 +9,7 @@
 exports.__esModule = true;
 var express = require("express");
 var bodyParser = require("body-parser");
+var http = require("http");
 // server class
 var TServer = (function () {
     // constructor
@@ -25,6 +26,7 @@ var TServer = (function () {
             mongoURL: '',
             static: []
         };
+        this.server = http.createServer(this.app);
     }
     // add object to objects list
     TServer.prototype.Add = function (obj) {
@@ -55,6 +57,10 @@ var TServer = (function () {
     TServer.prototype.AddRouter = function (uri) {
         return this.app.route(uri);
     };
+    // add router use
+    TServer.prototype.AddUse = function (uri, handler) {
+        this.app.use(uri, handler);
+    };
     // server initializator
     TServer.prototype.Listen = function (ListenPort) {
         var opts = this.Options;
@@ -63,12 +69,14 @@ var TServer = (function () {
             self.Log('HTTP Port was not been assigned to options');
         }
         else {
-            ListenPort = opts.port || ListenPort;
+            ListenPort = process.env.PORT || opts.port || ListenPort;
             // run objects DoBeforeListen
             this.objects.forEach(function (element) {
                 element.DoBeforeListen();
             });
-            this.app.listen(ListenPort, function (err) {
+            // listen to the port
+            // this.app.listen(ListenPort, function(err: any) {
+            this.server.listen(ListenPort, function (err) {
                 if (err) {
                     self.Log("HTTP Server can't be active on port " + opts.port);
                     throw err;
@@ -78,6 +86,11 @@ var TServer = (function () {
                 }
             });
         }
+    };
+    // stop server
+    TServer.prototype.Stop = function () {
+        this.server.close();
+        this.Log("HTTP Server Stopped.");
     };
     return TServer;
 }());

@@ -4,6 +4,8 @@
 
 <nav>
   <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/api">API</a></li>
     <li *ngFor="let route of routelist">
       <a routerLink="/{{route.href}}">{{route.caption}}</a>
     </li>
@@ -11,3 +13,5 @@
 </nav>
 
 <router-outlet></router-outlet>
+
+<app-logview></app-logview>

@@ -1,6 +1,6 @@
 /*
 * TServer unit
-* descr: creates basic server with Node + Express + Mongoose + BodyParser
+* descr: creates basic server with Node + Express + BodyParser
 * scope: only server
 * author: dpaula
 * https://github.com/debersonpaula
@@ -9,6 +9,7 @@
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import * as fs from 'fs';
+import * as http from 'http';
 import { TServerOptions } from './types';
 
 
@@ -17,6 +18,7 @@ class TServer {
     // components
     protected app: express.Application;
     protected objects: Array<TServerObject>;
+    protected server: http.Server;
     // server options
     public Options: TServerOptions;
 
@@ -31,6 +33,7 @@ class TServer {
             mongoURL: '',
             static: []
         };
+        this.server = http.createServer(this.app);
     }
 
     public Log = function(msg: string){
@@ -71,6 +74,11 @@ class TServer {
         return this.app.route(uri);
     }
 
+    // add router use
+    public AddUse(uri: string,  handler: any): void {
+        this.app.use(uri, handler);
+    }
+
     // server initializator
     public Listen(ListenPort?: number) {
         const opts = this.Options;
@@ -78,13 +86,14 @@ class TServer {
         if (!opts.port) {
             self.Log('HTTP Port was not been assigned to options');
         }else {
-            ListenPort = opts.port || ListenPort;
+            ListenPort = process.env.PORT || opts.port || ListenPort;
             // run objects DoBeforeListen
             this.objects.forEach(element => {
                 element.DoBeforeListen();
             });
-
-            this.app.listen(ListenPort, function(err: any) {
+            // listen to the port
+            // this.app.listen(ListenPort, function(err: any) {
+            this.server.listen(ListenPort, function(err: any) {
                 if (err) {
                     self.Log(`HTTP Server can't be active on port ${opts.port}`);
                     throw err;
@@ -92,8 +101,13 @@ class TServer {
                     self.Log(`HTTP Server active on port ${opts.port}`);
                 }
             });
-
         }
+    }
+
+    // stop server
+    public Stop(): void {
+        this.server.close();
+        this.Log(`HTTP Server Stopped.`);
     }
 }
 

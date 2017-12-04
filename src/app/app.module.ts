@@ -8,13 +8,15 @@ import { Page1Component } from './page1/page1.component';
 import { Page2Component } from './page2/page2.component';
 import { AppRouterModule } from './/app-router.module';
 import { AppDataService } from './app-data.service';
-
+import { AppLogService } from './app-log.service';
+import { LogviewComponent } from './logview/logview.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     Page1Component,
-    Page2Component
+    Page2Component,
+    LogviewComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +24,7 @@ import { AppDataService } from './app-data.service';
     AppRouterModule,
     HttpClientModule,
   ],
-  providers: [AppDataService],
+  providers: [AppDataService, AppLogService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

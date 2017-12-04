@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 
 import { TUserData } from './struct/types';
-// import { UserData } from './struct/user';
+import { AppLogService } from './app-log.service';
 
 
 const httpOptions = {
@@ -14,17 +14,28 @@ const httpOptions = {
 
 @Injectable()
 export class AppDataService {
-  private serverURI = '/user';
+  private serverURI = '/api';
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+    private log: AppLogService) {
   }
 
+  /* GET: get data from server */
   getData(): Observable<TUserData> {
-    // console.log(this.http.get<TUserData>(this.serverURI));
+    this.log.add('DataServices: fetched data');
     return this.http.get<TUserData>(this.serverURI);
-    // const test = this.http.get<TUserData>(this.serverURI);
-    // console.log(test);
-    // return of(UserData);
+  }
+
+  /** POST: add a new data to the server */
+  addData (data: TUserData): Observable<TUserData> {
+    /*
+    return this.http.post<Hero>(this.heroesUrl, hero, httpOptions).pipe(
+      tap((hero: Hero) => this.log(`added hero w/ id=${hero.id}`)),
+      catchError(this.handleError<Hero>('addHero'))
+      */
+      this.log.add('DataServices: added data');
+      return this.http.post<TUserData>(this.serverURI, data, httpOptions);
   }
 
 }
