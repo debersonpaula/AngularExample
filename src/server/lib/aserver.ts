@@ -53,7 +53,7 @@ class AServer extends TServerObject {
     private RouteGetRegister(req:Request,res:Response){
         res.send(DefAStandard.StandardViews.RouteGetRegister);
     }
-    //private RoutePostRegister
+    // private RoutePostRegister
     private RegisterStandardModels(){
         if (this.db){
             DefAStandard.StandardModels.forEach(model => {
@@ -63,9 +63,9 @@ class AServer extends TServerObject {
     }
 }
 
-export var DefAStandard = {
-    StandardViews:{
-        RouteGetRegister:`
+export let DefAStandard = {
+    StandardViews: {
+        RouteGetRegister: `
         <form action="/register" method="post">
             <div>
                 <label>Username:</label>
@@ -85,12 +85,12 @@ export var DefAStandard = {
         </form>
         `
     },
-    StandardModels:[
+    StandardModels: [
         {
             Name: 'dbUsers',
             Schema: {
-                username:{type:String,default:''},
-                userpass:{type:String,default:''}
+                username: {type: String, default: ''},
+                userpass: {type: String, default: ''}
             }
         }
     ]

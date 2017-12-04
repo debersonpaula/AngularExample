@@ -5,9 +5,7 @@ var fs = require("fs");
 var router = express.Router();
 /* Declare db object */
 var dbfile = __dirname + '/data.json';
-var db = {
-    name: ''
-};
+var db = { name: '' };
 // load json data or create new one
 if (fs.existsSync(dbfile)) {
     var content = fs.readFileSync(dbfile, 'utf8');

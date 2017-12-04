@@ -119,6 +119,7 @@ class TServerObject {
         AOwner.Add(this);
     }
     DoBeforeListen() {}
+    DoOnClose() {}
 }
 
 export {TServer, TServerObject};

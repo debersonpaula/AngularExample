@@ -4,9 +4,7 @@ const router: express.Router = express.Router();
 
 /* Declare db object */
 const dbfile = __dirname + '/data.json';
-let db = {
-    name: ''
-};
+let db = {name: ''};
 
 // load json data or create new one
 if (fs.existsSync(dbfile)){

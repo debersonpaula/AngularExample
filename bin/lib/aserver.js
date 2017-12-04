@@ -54,7 +54,7 @@ var AServer = (function (_super) {
     AServer.prototype.RouteGetRegister = function (req, res) {
         res.send(exports.DefAStandard.StandardViews.RouteGetRegister);
     };
-    //private RoutePostRegister
+    // private RoutePostRegister
     AServer.prototype.RegisterStandardModels = function () {
         var _this = this;
         if (this.db) {

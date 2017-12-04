@@ -32,6 +32,10 @@ class MServer extends TServerObject {
         }
     }
 
+    DoOnClose() {
+        
+    }
+
     AddModel(Schema: mongoose.SchemaDefinition, ModelName: string) {
         const content = new TModel(this.SOwner);
         content.Name = ModelName;
