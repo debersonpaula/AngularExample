@@ -22,7 +22,7 @@ This command will run in development mode and will watch for any changes in src 
 # Only for information
 
 ## Development Log (frontend)
-- npm install -g @angluar/cli
+- npm install -g @angular/cli
 - ng new app1 --style=scss
 - ng generate component page1
 - ng generate component page2
