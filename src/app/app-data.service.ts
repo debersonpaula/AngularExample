@@ -29,11 +29,6 @@ export class AppDataService {
 
   /** POST: add a new data to the server */
   addData (data: TUserData): Observable<TUserData> {
-    /*
-    return this.http.post<Hero>(this.heroesUrl, hero, httpOptions).pipe(
-      tap((hero: Hero) => this.log(`added hero w/ id=${hero.id}`)),
-      catchError(this.handleError<Hero>('addHero'))
-      */
       this.log.add('DataServices: added data');
       return this.http.post<TUserData>(this.serverURI, data, httpOptions);
   }

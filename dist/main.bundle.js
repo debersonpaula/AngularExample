@@ -53,11 +53,6 @@ var AppDataService = (function () {
     };
     /** POST: add a new data to the server */
     AppDataService.prototype.addData = function (data) {
-        /*
-        return this.http.post<Hero>(this.heroesUrl, hero, httpOptions).pipe(
-          tap((hero: Hero) => this.log(`added hero w/ id=${hero.id}`)),
-          catchError(this.handleError<Hero>('addHero'))
-          */
         this.log.add('DataServices: added data');
         return this.http.post(this.serverURI, data, httpOptions);
     };
@@ -147,7 +142,7 @@ var AppRouterModule = (function () {
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"header\">\n  <h3>{{title}}</h3>\n</div>\n\n<nav>\n  <ul>\n    <li><a href=\"/\">Home</a></li>\n    <li><a href=\"/api\">API</a></li>\n    <li *ngFor=\"let route of routelist\">\n      <a routerLink=\"/{{route.href}}\">{{route.caption}}</a>\n    </li>\n  </ul>\n</nav>\n\n<router-outlet></router-outlet>\n\n<app-logview></app-logview>\n"
+module.exports = "<div class=\"header\">\r\n  <h3>{{title}}</h3>\r\n</div>\r\n\r\n<nav>\r\n  <ul>\r\n    <li><a href=\"/\">Home</a></li>\r\n    <li><a href=\"/api\">API</a></li>\r\n    <li *ngFor=\"let route of routelist\">\r\n      <a routerLink=\"/{{route.href}}\">{{route.caption}}</a>\r\n    </li>\r\n  </ul>\r\n</nav>\r\n\r\n<router-outlet></router-outlet>\r\n\r\n<app-logview></app-logview>\r\n"
 
 /***/ }),
 
@@ -271,7 +266,7 @@ var AppModule = (function () {
 /***/ "../../../../../src/app/logview/logview.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<hr>\n<div *ngIf=\"log.messages.length\">\n  <h2>Messages</h2>\n  <button class=\"clear\"\n          (click)=\"log.clear()\">clear</button>\n  <div *ngFor='let logitem of log.messages'> {{logitem}} </div>\n</div>"
+module.exports = "<hr>\r\n<div *ngIf=\"log.messages.length\">\r\n  <h2>Messages</h2>\r\n  <button class=\"clear\"\r\n          (click)=\"log.clear()\">clear</button>\r\n  <div *ngFor='let logitem of log.messages'> {{logitem}} </div>\r\n</div>"
 
 /***/ }),
 
@@ -335,7 +330,7 @@ var LogviewComponent = (function () {
 /***/ "../../../../../src/app/page1/page1.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>Welcome {{user.name}} to My Site, please register your information below:</p>\n\n<form>\n  <label>Your Name:\n      <input [(ngModel)]=\"user.name\" name=\"username\">\n  </label>\n  <button (click)=\"save()\">save</button>\n</form>"
+module.exports = "<p>Welcome {{user.name}} to My Site, please register your information below:</p>\r\n\r\n<form>\r\n  <label>Your Name:\r\n      <input [(ngModel)]=\"user.name\" name=\"username\">\r\n  </label>\r\n  <button (click)=\"save()\">save</button>\r\n</form>"
 
 /***/ }),
 
@@ -411,7 +406,7 @@ var Page1Component = (function () {
 /***/ "../../../../../src/app/page2/page2.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  Data Submit test\n</p>\n\n<form action=\"/api\" method=\"POST\">\n  <input name=\"name\" type=\"text\" />\n  <input type=\"submit\" />\n</form>\n"
+module.exports = "<p>\r\n  Data Submit test\r\n</p>\r\n\r\n<form action=\"/api\" method=\"POST\">\r\n  <input name=\"name\" type=\"text\" />\r\n  <input type=\"submit\" />\r\n</form>\r\n"
 
 /***/ }),
 
