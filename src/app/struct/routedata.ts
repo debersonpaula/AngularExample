@@ -1,8 +1,8 @@
 import { TRouteData } from './types';
-import { Page1Component } from '../page1/page1.component';
-import { Page2Component } from '../page2/page2.component';
+import { HomeComponent } from '../views/home';
+import { LoginComponent } from '../views/login';
 
 export const RouteData: TRouteData[] = [
-    {caption: 'Page 1', href: 'page1', comp: Page1Component},
-    {caption: 'Page 2', href: 'page2', comp: Page2Component}
+    {caption: 'Home', href: '', comp: HomeComponent, hideMenu: false},
+    {caption: 'Login', href: 'login', comp: LoginComponent, hideMenu: true},
 ];

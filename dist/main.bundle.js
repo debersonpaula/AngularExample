@@ -142,7 +142,7 @@ var AppRouterModule = (function () {
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"header\">\r\n  <h3>{{title}}</h3>\r\n</div>\r\n\r\n<nav>\r\n  <ul>\r\n    <li><a href=\"/\">Home</a></li>\r\n    <li><a href=\"/api\">API</a></li>\r\n    <li *ngFor=\"let route of routelist\">\r\n      <a routerLink=\"/{{route.href}}\">{{route.caption}}</a>\r\n    </li>\r\n  </ul>\r\n</nav>\r\n\r\n<router-outlet></router-outlet>\r\n\r\n<app-logview></app-logview>\r\n"
+module.exports = "<div class=\"header\">\r\n  <h3 class=\"panelLogo\">{{title}}</h3>\r\n  <div class=\"panelSession\">\r\n    <div *ngIf=\"session.code != 'SESSION'\">\r\n      <a href=\"/register\">Register</a> | <a href=\"/login\">LogIn</a>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n<nav>\r\n  <ul>\r\n    <li *ngFor=\"let route of routelist\">\r\n      <a routerLink=\"/{{route.href}}\">{{route.caption}}</a>\r\n    </li>\r\n  </ul>\r\n</nav>\r\n\r\n<hr>\r\n\r\n<router-outlet></router-outlet>"
 
 /***/ }),
 
@@ -171,6 +171,7 @@ module.exports = module.exports.toString();
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__struct_routedata__ = __webpack_require__("../../../../../src/app/struct/routedata.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_main_service__ = __webpack_require__("../../../../../src/app/services/main.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -182,18 +183,31 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var AppComponent = (function () {
-    function AppComponent() {
-        this.title = 'App - Test 1';
-        this.routelist = __WEBPACK_IMPORTED_MODULE_1__struct_routedata__["a" /* RouteData */];
+    // main constructor
+    function AppComponent(service) {
+        this.service = service;
+        this.title = 'Welcome to Angular-TNEMA Server'; // Title of the page
+        this.routelist = __WEBPACK_IMPORTED_MODULE_1__struct_routedata__["a" /* RouteData */]; // Route List to define pages
+        this.session = { code: '', content: '' };
     }
+    // get data
+    AppComponent.prototype.ngOnInit = function () {
+        this.getSession();
+    };
+    // get session status
+    AppComponent.prototype.getSession = function () {
+        var _this = this;
+        this.service.getData('/user').subscribe(function (data) { return _this.session = data; });
+    };
     AppComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
             selector: 'app-root',
             template: __webpack_require__("../../../../../src/app/app.component.html"),
             styles: [__webpack_require__("../../../../../src/app/app.component.scss")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__services_main_service__["a" /* MainService */]])
     ], AppComponent);
     return AppComponent;
 }());
@@ -215,9 +229,10 @@ var AppComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__page1_page1_component__ = __webpack_require__("../../../../../src/app/page1/page1.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__page2_page2_component__ = __webpack_require__("../../../../../src/app/page2/page2.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_router_module__ = __webpack_require__("../../../../../src/app/app-router.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__app_data_service__ = __webpack_require__("../../../../../src/app/app-data.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__app_log_service__ = __webpack_require__("../../../../../src/app/app-log.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__logview_logview_component__ = __webpack_require__("../../../../../src/app/logview/logview.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__logview_logview_component__ = __webpack_require__("../../../../../src/app/logview/logview.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__views_home__ = __webpack_require__("../../../../../src/app/views/home.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__views_login__ = __webpack_require__("../../../../../src/app/views/login.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__services_main_service__ = __webpack_require__("../../../../../src/app/services/main.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -232,6 +247,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+// import { AppDataService } from './app-data.service';
+// import { AppLogService } from './app-log.service';
+
 
 
 
@@ -244,7 +262,9 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* AppComponent */],
                 __WEBPACK_IMPORTED_MODULE_5__page1_page1_component__["a" /* Page1Component */],
                 __WEBPACK_IMPORTED_MODULE_6__page2_page2_component__["a" /* Page2Component */],
-                __WEBPACK_IMPORTED_MODULE_10__logview_logview_component__["a" /* LogviewComponent */]
+                __WEBPACK_IMPORTED_MODULE_8__logview_logview_component__["a" /* LogviewComponent */],
+                __WEBPACK_IMPORTED_MODULE_9__views_home__["a" /* HomeComponent */],
+                __WEBPACK_IMPORTED_MODULE_10__views_login__["a" /* LoginComponent */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -252,7 +272,8 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_7__app_router_module__["a" /* AppRouterModule */],
                 __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["b" /* HttpClientModule */],
             ],
-            providers: [__WEBPACK_IMPORTED_MODULE_8__app_data_service__["a" /* AppDataService */], __WEBPACK_IMPORTED_MODULE_9__app_log_service__["a" /* AppLogService */]],
+            // providers: [AppDataService, AppLogService],
+            providers: [__WEBPACK_IMPORTED_MODULE_11__services_main_service__["a" /* MainService */]],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* AppComponent */]]
         })
     ], AppModule);
@@ -464,19 +485,145 @@ var Page2Component = (function () {
 
 /***/ }),
 
+/***/ "../../../../../src/app/services/main.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MainService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("../../../common/esm5/http.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var httpOptions = {
+    headers: new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpHeaders */]({ 'Content-Type': 'application/json' })
+};
+var MainService = (function () {
+    function MainService(http) {
+        this.http = http;
+    }
+    /* GET: get data from server */
+    MainService.prototype.getData = function (URI) {
+        console.log('getData from URI ' + URI);
+        return this.http.get(URI);
+    };
+    MainService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]])
+    ], MainService);
+    return MainService;
+}());
+
+
+
+/***/ }),
+
 /***/ "../../../../../src/app/struct/routedata.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RouteData; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__page1_page1_component__ = __webpack_require__("../../../../../src/app/page1/page1.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__page2_page2_component__ = __webpack_require__("../../../../../src/app/page2/page2.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__views_home__ = __webpack_require__("../../../../../src/app/views/home.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__views_login__ = __webpack_require__("../../../../../src/app/views/login.ts");
 
 
 var RouteData = [
-    { caption: 'Page 1', href: 'page1', comp: __WEBPACK_IMPORTED_MODULE_0__page1_page1_component__["a" /* Page1Component */] },
-    { caption: 'Page 2', href: 'page2', comp: __WEBPACK_IMPORTED_MODULE_1__page2_page2_component__["a" /* Page2Component */] }
+    { caption: 'Home', href: '', comp: __WEBPACK_IMPORTED_MODULE_0__views_home__["a" /* HomeComponent */], hideMenu: false },
+    { caption: 'Login', href: 'login', comp: __WEBPACK_IMPORTED_MODULE_1__views_login__["a" /* LoginComponent */], hideMenu: true },
 ];
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/views/home.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div>Home</div>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/views/home.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomeComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var HomeComponent = (function () {
+    function HomeComponent() {
+    }
+    HomeComponent.prototype.ngOnInit = function () {
+    };
+    HomeComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'app-home',
+            template: __webpack_require__("../../../../../src/app/views/home.html"),
+        }),
+        __metadata("design:paramtypes", [])
+    ], HomeComponent);
+    return HomeComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/views/login.html":
+/***/ (function(module, exports) {
+
+module.exports = "<h4>Login</h4>\r\n<form id=\"formLogin\">\r\n    <div>\r\n        <label>Username:</label>\r\n        <input [(ngModel)]=\"UserLogin.username\" name=\"username\">\r\n    </div>\r\n    <div>\r\n        <label>Password:</label>\r\n        <input type=\"password\" [(ngModel)]=\"UserLogin.userpass\" name=\"userpass\">\r\n    </div>\r\n    <div>\r\n        <input type=\"submit\" value=\"Log In\"/>\r\n    </div>\r\n</form>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/views/login.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var LoginComponent = (function () {
+    function LoginComponent() {
+        this.UserLogin = { username: '', userpass: '' };
+    }
+    LoginComponent.prototype.ngOnInit = function () {
+    };
+    LoginComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'app-login',
+            template: __webpack_require__("../../../../../src/app/views/login.html"),
+        }),
+        __metadata("design:paramtypes", [])
+    ], LoginComponent);
+    return LoginComponent;
+}());
+
 
 
 /***/ }),

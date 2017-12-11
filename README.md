@@ -35,9 +35,7 @@ This command will run in development mode and will watch for any changes in src 
 - npm install express --save
 - npm install body-parser --save
 - npm install mongoose --save
-- npm install @types/express --save-dev
-- npm install @types/mongoose --save-dev
-- npm install @types/body-parser --save-dev
+- npm install @types/express @types/mongoose @types/body-parser --save-dev
 - npm install node-watch --save-dev
 
 ## Development General

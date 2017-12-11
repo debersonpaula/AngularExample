@@ -9,3 +9,17 @@ html{
 a{
     @extend %ColorFont;
 }
+
+.header{
+    position: relative;
+    border-bottom: 1px solid #ddd;
+    .panelLogo{
+        display: inline-block;
+        width: 40%;
+    }
+    .panelSession{
+        display: inline-block;
+        width: 40%;
+        text-align: right;
+    }
+}

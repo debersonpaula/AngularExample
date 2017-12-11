@@ -35,7 +35,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "html, a {\n  color: #fff; }\n\nhtml {\n  background: #222121; }\n", ""]);
+exports.push([module.i, "html, a {\n  color: #fff; }\n\nhtml {\n  background: #222121; }\n\n.header {\n  position: relative;\n  border-bottom: 1px solid #ddd; }\n  .header .panelLogo {\n    display: inline-block;\n    width: 40%; }\n  .header .panelSession {\n    display: inline-block;\n    width: 40%;\n    text-align: right; }\n", ""]);
 
 // exports
 

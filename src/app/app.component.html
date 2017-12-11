@@ -1,17 +1,20 @@
 <div class="header">
-  <h3>{{title}}</h3>
+  <h3 class="panelLogo">{{title}}</h3>
+  <div class="panelSession">
+    <div *ngIf="session.code != 'SESSION'">
+      <a href="/register">Register</a> | <a href="/login">LogIn</a>
+    </div>
+  </div>
 </div>
 
 <nav>
   <ul>
-    <li><a href="/">Home</a></li>
-    <li><a href="/api">API</a></li>
     <li *ngFor="let route of routelist">
       <a routerLink="/{{route.href}}">{{route.caption}}</a>
     </li>
   </ul>
 </nav>
 
-<router-outlet></router-outlet>
+<hr>
 
-<app-logview></app-logview>
+<router-outlet></router-outlet>
