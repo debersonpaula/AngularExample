@@ -1,14 +1,15 @@
 import { TNEMAServer } from 'tnema';
+import * as path from 'path';
 
 const server = new TNEMAServer('angApp', 'secret ang');
 
 export function StartServer(cb?: Function) {
-    server.port(3000);
-    server.mongoURI('mongodb://localhost/test');
-    // Catch all other routes and return the index file
-    // server.HttpServer.AddRouteToFile('*', __dirname + '/../dist/index.html');
+    server.Port(3000);
+    server.MongoSource('mongodb://localhost/test');
     // Add Static Route
-    server.HttpServer.AddStatic(__dirname + '/../dist');
+    server.HttpServer.RouteStatic(__dirname + '/../dist');
+    // Catch all other routes and return the index file
+    server.HttpServer.RouteSendFile('*', path.join(__dirname, '../dist/index.html'));
 
     // Start Server
     server.Create(function(){

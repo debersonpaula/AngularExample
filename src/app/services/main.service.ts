@@ -18,4 +18,10 @@ export class MainService {
         console.log('getData from URI ' + URI);
         return this.http.get<TContent>(URI);
     }
+
+    /* POST: send data to server */
+    postData(URI: string, data: any): Observable<TContent> {
+        console.log('postData to URI ' + URI);
+        return this.http.post<TContent>(URI, data, httpOptions);
+    }
 }

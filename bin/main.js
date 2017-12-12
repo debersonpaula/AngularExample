@@ -1,14 +1,15 @@
 "use strict";
 exports.__esModule = true;
 var tnema_1 = require("tnema");
+var path = require("path");
 var server = new tnema_1.TNEMAServer('angApp', 'secret ang');
 function StartServer(cb) {
-    server.port(3000);
-    server.mongoURI('mongodb://localhost/test');
-    // Catch all other routes and return the index file
-    // server.HttpServer.AddRouteToFile('*', __dirname + '/../dist/index.html');
+    server.Port(3000);
+    server.MongoSource('mongodb://localhost/test');
     // Add Static Route
-    server.HttpServer.AddStatic(__dirname + '/../dist');
+    server.HttpServer.RouteStatic(__dirname + '/../dist');
+    // Catch all other routes and return the index file
+    server.HttpServer.RouteSendFile('*', path.join(__dirname, '../dist/index.html'));
     // Start Server
     server.Create(function () {
         if (cb) {

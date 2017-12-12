@@ -2,13 +2,15 @@
 <form id="formLogin">
     <div>
         <label>Username:</label>
-        <input [(ngModel)]="UserLogin.username" name="username">
+        <input type="text" [(ngModel)]="UserLogin.username" name="username">
     </div>
     <div>
         <label>Password:</label>
         <input type="password" [(ngModel)]="UserLogin.userpass" name="userpass">
     </div>
     <div>
-        <input type="submit" value="Log In"/>
+        <input type="submit" value="Log In" (click)="submitLogin()"/>
     </div>
+
+    <p>{{NotifyMessage}}</p>
 </form>
