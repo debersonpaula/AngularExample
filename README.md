@@ -1,6 +1,11 @@
-# Angular Example
+# MEAN Stack Example
 
-This application uses the MEAN stack architeture.
+This application uses the MEAN stack architeture with Angular 5.x.
+
+Also uses the following packages to run server on backend:
+ - TNEMA Server: TypeScript + Node + Express + Mongoose + Authentication
+ - debugtxt: display colored text on console
+ - tscbuilder: compiler and builder for server side
 
 ## Install Angular and Dependencies
 
@@ -17,26 +22,3 @@ Install dependencies
 This command will run in development mode and will watch for any changes in src folder, both for frontend (Angular) and for backend (/src/server):
 
 `npm run dev`
-
-
-# Only for information
-
-## Development Log (frontend)
-- npm install -g @angular/cli
-- ng new app1 --style=scss
-- ng generate component page1
-- ng generate component page2
-- ng generate module app-router --flat --module=app
-- ng generate service app-data --module=app
-- ng generate service app-log --module=app
-- ng generate component msglog
-
-## Development Log (backend)
-- npm install express --save
-- npm install body-parser --save
-- npm install mongoose --save
-- npm install @types/express @types/mongoose @types/body-parser --save-dev
-- npm install node-watch --save-dev
-
-## Development General
-- npm install concurrently --save-dev

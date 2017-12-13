@@ -1,8 +1,6 @@
 import { TRouteData } from './types';
-import { HomeComponent } from '../views/home';
-import { LoginComponent } from '../views/login';
+import { HomeData } from '../views/home';
+import { LoginData } from '../views/login';
+import { RegisterData } from '../views/register';
 
-export const RouteData: TRouteData[] = [
-    {caption: 'Home', href: '', comp: HomeComponent, hideMenu: false},
-    {caption: 'Login', href: 'login', comp: LoginComponent, hideMenu: true},
-];
+export const RouteData: TRouteData[] = [ HomeData, RegisterData, LoginData ];

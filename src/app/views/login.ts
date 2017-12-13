@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TUserLogin, TContent } from '../struct/types';
 import { MainService } from '../services/main.service';
+import { TRouteData } from '../struct/types';
 
 @Component({
   selector: 'app-login',
@@ -12,17 +13,27 @@ export class LoginComponent implements OnInit {
 
   constructor(private service: MainService) {
     this.UserLogin = {username: '', userpass: ''};
-    this.NotifyMessage = '';
   }
 
   ngOnInit() {
   }
 
   submitLogin(): void {
-    // console.log(this.UserLogin);
-    // let data: TContent = { code}
+    this.service.postData('/user/login', this.UserLogin).subscribe(
+      data => this.CheckLogin(data)
+    );
+  }
 
-    this.service.postData('/user/login', this.UserLogin).subscribe(function(data){ console.log(data); });
+  private CheckLogin(data: TContent) {
+    if (data.code === 'ACCEPTED') {
+      this.NotifyMessage = '';
+      window.location.replace('/');
+    } else {
+      this.NotifyMessage = data.content;
+    }
   }
 
 }
+
+export const LoginData: TRouteData = {
+  caption: 'Login', href: 'login', comp: LoginComponent, hideMenu: true};

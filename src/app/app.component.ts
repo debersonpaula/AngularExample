@@ -27,4 +27,11 @@ export class AppComponent implements OnInit {
   getSession(): void {
     this.service.getData('/user').subscribe(data => this.session = data);
   }
+
+  // logout
+  doLogout(): void {
+    this.service.getData('/user/logout').subscribe(function(){
+      window.location.replace('/');
+    });
+  }
 }

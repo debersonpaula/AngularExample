@@ -4,9 +4,6 @@ export class TRouteData {
     comp: any;
     hideMenu: boolean;
 }
-export class TUserData {
-    name: string;
-}
 export class TContent {
     code: string;
     content: any;
@@ -14,4 +11,9 @@ export class TContent {
 export class TUserLogin {
     username: string;
     userpass: string;
+}
+export class TUserRegister {
+    username: string;
+    userpass: string;
+    userpass2: string;
 }

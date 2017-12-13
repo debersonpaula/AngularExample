@@ -1,0 +1,20 @@
+<h4>Register</h4>
+<form id="formRegister">
+    <div>
+        <label>Username:</label>
+        <input type="text" [(ngModel)]="UserRegister.username" name="username">
+    </div>
+    <div>
+        <label>Password:</label>
+        <input type="password" [(ngModel)]="UserRegister.userpass" name="userpass">
+    </div>
+    <div>
+        <label>Confirm Password:</label>
+        <input type="password" [(ngModel)]="UserRegister.userpass2" name="userpass2">
+    </div>
+    <div>
+        <input type="submit" value="Register" (click)="submitLogin()"/>
+    </div>
+
+    <p>{{ NotifyMessage }}</p>
+</form>

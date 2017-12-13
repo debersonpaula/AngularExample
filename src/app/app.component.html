@@ -1,17 +1,19 @@
 <div class="header">
   <h3 class="panelLogo">{{title}}</h3>
   <div class="panelSession">
-    <div *ngIf="session.code != 'SESSION'">
-      <a href="/register">Register</a> | <a href="/login">LogIn</a>
-    </div>
+    <span *ngIf="session.code == 'SESSION'; then logout else login"></span>    
+    <ng-template #login><a routerLink="/register">Register</a> | <a routerLink="/login">Login</a></ng-template>
+    <ng-template #logout>Hello {{ session.content.username }} | <button (click)="doLogout()">Logout</button></ng-template>
   </div>
 </div>
 
 <nav>
   <ul>
-    <li *ngFor="let route of routelist">
-      <a routerLink="/{{route.href}}">{{route.caption}}</a>
-    </li>
+    <ng-container *ngFor="let route of routelist">
+      <li *ngIf="!route.hideMenu">
+        <a routerLink="/{{route.href}}">{{route.caption}}</a>
+      </li>
+    </ng-container>
   </ul>
 </nav>
 
