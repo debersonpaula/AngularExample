@@ -11,7 +11,7 @@ Also uses the following packages to run server on backend:
 
 If angular is not installed, run the command:
 
-`npm install -g @angluar/cli`
+`npm install -g @angular/cli`
 
 Install dependencies
 
