@@ -1,9 +1,10 @@
 <div class="header">
   <h3 class="panelLogo">{{title}}</h3>
   <div class="panelSession">
-    <span *ngIf="session.code == 'SESSION'; then logout else login"></span>    
+    
+    <span *ngIf="session; then logout else login"></span>    
     <ng-template #login><a routerLink="/register">Register</a> | <a routerLink="/login">Login</a></ng-template>
-    <ng-template #logout>Hello {{ session.content.username }} | <button (click)="doLogout()">Logout</button></ng-template>
+    <ng-template #logout>Hello {{ session.username }} | <button (click)="doLogout()">Logout</button></ng-template>
   </div>
 </div>
 

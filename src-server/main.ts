@@ -4,8 +4,8 @@ import * as path from 'path';
 const server = new TNEMAServer('angApp', 'secret ang');
 
 export function StartServer(cb?: Function) {
-    server.Port(3000);
-    server.MongoSource('mongodb://localhost/test');
+    server.Port = 3000;
+    server.MongoSource = 'mongodb://localhost/test';
     // Add Static Route
     server.HttpServer.RouteStatic(__dirname + '/../dist');
     // Catch all other routes and return the index file

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TUserLogin, TContent } from '../struct/types';
+import { TUserLogin, TServerResponse } from '../struct/types';
 import { MainService } from '../services/main.service';
 import { TRouteData } from '../struct/types';
 
@@ -20,17 +20,20 @@ export class LoginComponent implements OnInit {
 
   submitLogin(): void {
     this.service.postData('/user/login', this.UserLogin).subscribe(
-      data => this.CheckLogin(data)
+      data => this.CheckLogin(data),
+      err => this.HandleError(err)
     );
   }
 
-  private CheckLogin(data: TContent) {
-    if (data.code === 'ACCEPTED') {
+  private CheckLogin(data: TServerResponse) {
+    if (data.status === 200) {
       this.NotifyMessage = '';
       window.location.replace('/');
-    } else {
-      this.NotifyMessage = data.content;
     }
+  }
+
+  private HandleError(err: any) {
+    this.NotifyMessage = err.error.messages.toString();
   }
 
 }

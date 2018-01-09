@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouteData } from './struct/routedata';
 import { MainService } from './services/main.service';
-import { TContent } from './struct/types';
+import { TServerResponse } from './struct/types';
 
 @Component({
   selector: 'app-root',
@@ -11,11 +11,11 @@ import { TContent } from './struct/types';
 export class AppComponent implements OnInit {
   title = 'Welcome to Angular-TNEMA Server'; // Title of the page
   routelist = RouteData; // Route List to define pages
-  session: TContent; // session content
+  session: any; // session content
 
   // main constructor
   constructor(private service: MainService) {
-    this.session = {code: '', content: ''};
+    this.session = false;
   }
 
   // get data
@@ -25,7 +25,10 @@ export class AppComponent implements OnInit {
 
   // get session status
   getSession(): void {
-    this.service.getData('/user').subscribe(data => this.session = data);
+    this.service.getData('/user').subscribe(
+      data => this.DefineSession(data),
+      err => this.HandleError(err)
+    );
   }
 
   // logout
@@ -33,5 +36,14 @@ export class AppComponent implements OnInit {
     this.service.getData('/user/logout').subscribe(function(){
       window.location.replace('/');
     });
+  }
+
+  private HandleError(err: any) {
+    this.session = false;
+  }
+
+  private DefineSession(data: TServerResponse) {
+    console.log(data);
+    this.session = data.messages[0];
   }
 }

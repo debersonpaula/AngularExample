@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TUserRegister, TContent } from '../struct/types';
+import { TUserRegister, TServerResponse } from '../struct/types';
 import { MainService } from '../services/main.service';
 import { TRouteData } from '../struct/types';
 
@@ -20,19 +20,21 @@ export class RegisterComponent implements OnInit {
 
   submitLogin(): void {
     this.service.postData('/user', this.UserRegister).subscribe(
-      data => this.CheckRegister(data)
+      data => this.CheckRegister(data),
+      err => this.HandleError(err)
     );
   }
 
-  private CheckRegister(data: TContent) {
-    if (data.code === 'DONE') {
+  private CheckRegister(data: TServerResponse) {
+    if (data.status === 200) {
       this.NotifyMessage = '';
       window.location.replace('/');
-    } else {
-      this.NotifyMessage = data.content;
     }
   }
 
+  private HandleError(err: any) {
+    this.NotifyMessage = err.error.messages.toString();
+  }
 }
 
 export const RegisterData: TRouteData = {
