@@ -27,7 +27,7 @@
     "debugtxt": "0.0.1",
     "mongoose": "^4.13.5",
     "rxjs": "^5.5.2",
-    "tnema": "^0.2.0",
+    "tnema": "^0.3.0",
     "zone.js": "^0.8.14"
   },
   "devDependencies": {
@@ -36,7 +36,6 @@
     "@angular/language-service": "^5.0.0",
     "@types/body-parser": "^1.16.8",
     "@types/express": "^4.0.39",
-    "@types/express-session": "^1.15.6",
     "@types/jasmine": "~2.5.53",
     "@types/jasminewd2": "~2.0.2",
     "@types/mongoose": "^4.7.28",

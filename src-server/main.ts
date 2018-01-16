@@ -1,7 +1,8 @@
 import { TNEMAServer } from 'tnema';
 import * as path from 'path';
 
-const server = new TNEMAServer('angApp', 'secret ang');
+const server = new TNEMAServer('angApp', './angSessions.json');
+
 
 export function StartServer(cb?: Function) {
     server.Port = 3000;

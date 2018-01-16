@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var tnema_1 = require("tnema");
 var path = require("path");
-var server = new tnema_1.TNEMAServer('angApp', 'secret ang');
+var server = new tnema_1.TNEMAServer('angApp', './angSessions.json');
 function StartServer(cb) {
     server.Port = 3000;
     server.MongoSource = 'mongodb://localhost/test';
