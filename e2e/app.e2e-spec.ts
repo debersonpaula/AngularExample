@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('app1 App', () => {
+describe('tnema-ang App', () => {
   let page: AppPage;
 
   beforeEach(() => {

@@ -1,11 +1,9 @@
-# MEAN Stack Example
+# Angular 5 + TNEMA Server
 
 This application uses the MEAN stack architeture with Angular 5.x.
 
-Also uses the following packages to run server on backend:
+Also uses the following package to run server on backend:
  - TNEMA Server: TypeScript + Node + Express + Mongoose + Authentication
- - debugtxt: display colored text on console
- - tscbuilder: compiler and builder for server side
 
 ## Install Angular and Dependencies
 
@@ -19,6 +17,8 @@ Install dependencies
 
 ## Run the application in Development mode
 
-This command will run in development mode and will watch for any changes in src folder, both for frontend (Angular) and for backend (/src/server):
+To run server for backend (will run at port 3000):
+`node server`
 
-`npm run dev`
+To run angular application for frontend (will run at port 4200):
+`ng serve`

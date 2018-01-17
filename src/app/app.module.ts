@@ -4,13 +4,13 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
-import { AppComponent } from './app.component';
-import { AppRouterModule } from './app-router.module';
-
-import { HomeComponent } from './views/home';
-import { LoginComponent } from './views/login';
-import { RegisterComponent } from './views/register';
 import { MainService } from './services/main.service';
+import { AppComponent } from './app.component';
+import { MainrouterModule } from './modules/mainrouter.module';
+import { HomeComponent } from './views/home/home.component';
+import { LoginComponent } from './views/login/login.component';
+import { RegisterComponent } from './views/register/register.component';
+
 
 @NgModule({
   declarations: [
@@ -20,11 +20,11 @@ import { MainService } from './services/main.service';
     RegisterComponent
   ],
   imports: [
-    RouterModule,
     BrowserModule,
-    FormsModule,
-    AppRouterModule,
     HttpClientModule,
+    RouterModule,
+    FormsModule,
+    MainrouterModule
   ],
   providers: [MainService],
   bootstrap: [AppComponent]
